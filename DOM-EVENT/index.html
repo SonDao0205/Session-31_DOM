@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="handleClick" id="btn-click">Click me</button>
+
+    <input type="text" id="email">
+    <script >
+        function handleClick(){
+            alert("clicked");
+        }
+        const btnElement = document.querySelector("#btn-click");
+        const btnElement2 = document.querySelector("#btn-click-2");
+        const inputElement = document.querySelector("#email");
+        // const btnElement = document.querySelector("#btn-click");
+
+        btnElement.onclick = function(){
+            alert("button clicked 1");
+        };
+
+        // cách 3
+        btnElement2.addEventListener("click", function(){
+            alert("button clicked 2");
+        });
+
+        inputElement.addEventListener("input", function(){
+            console.log("input changed", event.target.id);
+            
+        });
+    </script>
+</body>
+</html>

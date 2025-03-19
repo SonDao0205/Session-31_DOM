@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Todolist</h1>
+    <div>
+      <form id="form">
+        <input id="job-name" type="text" />
+        <button type="submit" id="btn-submit">Submit</button>
+      </form>
+      <span id="error"></span>
+    </div>
+    <ul id="list-job">
+      <li>Quet nhà</li>
+      <li>Giat đồ</li>
+      <li>Chơi</li>
+    </ul>
+    <script>
+      const formElement = document.querySelector("#form");
+      const inputElement = document.querySelector("#job-name");
+      const listJobElement = document.querySelector("#list-job");
+      const errorElement = document.querySelector("#error");
+      let jobs = [];
+
+      function renderJob() {
+        listJobElement.textContent = "";
+        jobs.forEach((job) => {
+            // tạo 1 ele làm thẻ li
+          const liElement = document.createElement("li");
+        //   gán nội dung cho li
+          liElement.textContent = job.name;
+        //   gán li làm con của ul
+          listJobElement.appendChild(liElement);
+        });
+      }
+
+      //submit form
+      formElement.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const inputValue = inputElement.value.trim();
+        if (inputValue) {
+          const newJob = {
+            id: Math.ceil(Math.random() * 100),
+            name: inputValue,
+            status: false,
+          };
+          jobs.push(newJob);
+          renderJob();
+          alert("Thêm công việc thành công");
+          inputElement.value = "";
+        } else {
+          errorElement.textContent = "Vui lòng nhập tên công việc!";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mode{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Toggle Dark/Light Mode</h1>
+        <h3>Click the button to toggle between dark and light mode for this page</h3>
+        <button id="changeMode">Toggle dark mode</button>
+    </div>
+    <script>
+        const containerElement = document.querySelector("#container")
+        const changeMode = document.querySelector("#changeMode")
+        changeMode.addEventListener("click", function(){
+            // nếu bấm nút changeMode thì sẽ thực hiện class .mode
+            containerElement.classList.toggle("mode");
+        })
+    </script>
+</body>
+</html>
+

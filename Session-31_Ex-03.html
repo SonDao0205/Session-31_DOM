@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #green{
+            background-color: green;
+        }
+        #red{
+            background-color: red;
+        }
+        #purple{
+            background-color: purple;
+        }
+        .green, .red, .purple{
+            padding: 50px;
+        }
+        .blockColor{
+            display: flex;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>change background-color</p>
+        <p>Mouse click</p>
+        <div class="blockColor">
+            <p id="green" class="green">xanh</p>
+            <p id="red" class="red">do</p>
+            <p id="purple" class="purple">tim</p>
+        </div>
+    </div>
+    <script>
+        const greenElement = document.querySelector("#green")
+        const redElement = document.querySelector("#red")
+        const purpleElement = document.querySelector("#purple")
+        const containerElement = document.querySelector(".container")
+        greenElement.addEventListener("click",function(){
+            containerElement.style.backgroundColor = "green";
+        })
+        redElement.addEventListener("click",function(){
+            containerElement.style.backgroundColor = "red";
+        })
+        purpleElement.addEventListener("click",function(){
+            containerElement.style.backgroundColor = "purple";
+        })
+    </script>
+</body>
+</html>

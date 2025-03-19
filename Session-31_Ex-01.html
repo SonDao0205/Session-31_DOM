@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <p id="text">This is a text</p>
+    <button id="hide">Hide text</button>
+    <button id="show">Show text</button>
+    <script>
+        const textElement = document.querySelector("#text")
+        const btnHideElement = document.querySelector("#hide")
+        const btnShowElement = document.querySelector("#show")
+        btnHideElement.addEventListener("click", function () {
+            // nếu như bấm vào nút buttonHide sẽ thực hiện class .hide
+            textElement.classList.toggle("hide")
+        })
+        btnShowElement.addEventListener("click", function () {
+            // nếu như bấm vào nút buttonShow sẽ thu hồi class .hide
+            textElement.classList.toggle("hide")
+        })
+    </script>
+</body>
+</html>
