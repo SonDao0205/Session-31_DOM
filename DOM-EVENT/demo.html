@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #form{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form method="get" id="form">
+        <input type="text" id="name" placeholder="Enter name">
+        <br>
+        <input type="email" name="email" id="email" placeholder="Enter email">
+        <br>
+        <select name="gender" id="genderChoice">
+            <option value="male">Male</option>
+            <option value="male">Female</option>
+            <option value="male">Other</option>
+        </select>
+        <br>
+        <button type="button" id="btnClose">Close</button>
+        <button type="button" id="btnAdd">Add</button>
+    </form>
+    <button type="button" id="btnShowForm">Add Student</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td>1</td>
+                <td>son deo</td>
+                <td>sondeo@gmail.com</td>
+                <td>Male</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const user = [
+            { id: 1,name: "Son Dao", email: "sondao@gmail.com", gender: 0 },
+            { id: 2,name: "Linh Tran", email: "linhtran@gmail.com", gender: 1 },
+            { id: 3,name: "Minh Pham", email: "minhpham@gmail.com", gender: 0 },
+            { id: 4,name: "Hoa Nguyen", email: "hoanguyen@gmail.com", gender: 1 },
+            { id: 5,name: "Tuan Le", email: "tuanle@gmail.com", gender: 0 },
+            { id: 6,name: "An Vo", email: "anvo@gmail.com", gender: 0 },
+            { id: 7,name: "Phuong Bui", email: "phuongbui@gmail.com", gender: 1 },
+            { id: 8,name: "Duc Hoang", email: "duchoang@gmail.com", gender: 0 },
+            { id: 9,name: "Mai Ly", email: "maily@gmail.com", gender: 1 },
+            { id: 10,name: "Huy Phan", email: "huyphan@gmail.com", gender: 0 },
+            { id: 11,name: "Lan Chau", email: "lanchau@gmail.com", gender: 1 }
+];
+        // phạm vi truy xuất các phần tử trong DOM
+        const tbodyEle = document.querySelector("#tbody")
+        const formEle = document.querySelector("#form")
+        const btnShowFormEle = document.querySelector("#btnShowForm")
+        const btnCloseEle = document.querySelector("#btnClose")
+
+        const renderData = () => {
+            const htmls = user.map((student,index)=>{
+            return `
+            <tr>
+                <td>${index+1}</td>
+                <td>${student.name}</td>
+                <td>${student.email}</td>
+                <td>${student.gender === 0 ? `Male` : `Female`}</td>
+            </tr>
+            `
+            })
+            // chuyển đổi từ mảng thành chuỗi
+            const convert = htmls.join("")
+            // append chuỗi HTML vào DOM
+            tbodyEle.innerHTML = convert
+        }
+        renderData()
+        // xoá phần tử 
+        const handleDelete = (index) => {
+            const confirmDelete = confirm(`ok`)
+            if (confirmDelete) {
+                user.splice(index,1)
+            }
+            renderData()
+        }
+
+        // hàm mở form
+        const showForm = () => {
+            formEle.style.display = "block"
+        }
+        const closeForm = () => {
+            formEle.style.display = "none"
+        }
+        btnShowFormEle.addEventListener("click",function(){
+            event.preventDefault()
+            showForm()
+        })
+
+        btnCloseEle.addEventListener("click",function(){
+            event.preventDefault()
+            closeForm()
+        })
+        
+    </script>
+</body>
+</html>
